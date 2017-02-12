@@ -3,11 +3,16 @@
         
         <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">-->
         <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">-->
-
+        
         <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+        
+        @if(env('APP_ENV') == 'prod')
+        <link rel="stylesheet" href="/js/common.bundle.css" />
+        <link rel="stylesheet" href="/js/admin.css" />
+        @else
         <link rel="stylesheet" href="http://{{env('NPM_SERVER', 'localhost')}}:8088/common.bundle.css" />
         <link rel="stylesheet" href="http://{{env('NPM_SERVER', 'localhost')}}:8088/admin.css" />
-        
+        @endif
         
         <base href="/">
 
@@ -32,7 +37,12 @@
         <div class="main-container">
             <ui-view></ui-view>
         </div>
+         @if(env('APP_ENV') == 'prod')
+        <script src="/js/common.bundle.js"></script>
+        <script src="/js/admin.js"></script>
+        @else
         <script src="//{{env('NPM_SERVER', 'localhost')}}:8088/common.bundle.js"></script>
         <script src="http://{{env('NPM_SERVER', 'localhost')}}:8088/admin.js"></script>
+        @endif
     </body>
 </html>
