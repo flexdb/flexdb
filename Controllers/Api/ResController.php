@@ -5,7 +5,7 @@ namespace Modules\Flexwb\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Modules\Base\Controller\BaseController;
-use Modules\Services\ValidatorService;
+use Modules\Flexwb\Services\ValidatorService;
 
 class ResController extends BaseController {
 
@@ -15,7 +15,7 @@ class ResController extends BaseController {
     \App\Repositories\QueryBuilderRepository $repository
     ) {
         $this->repository = $repository;
-        $this->validator = new Validator();
+        $this->validator = new ValidatorService();
     }
 
     public function resIndex(Request $request, $topRes) {
