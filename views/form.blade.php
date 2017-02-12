@@ -6,5 +6,6 @@
 <div style="padding: 10px 10px;">
 <button ng-if="dialogType=='add'" class="btn btn-primary btn-block" ng-click="home.store(form)">Add</button>
 <button ng-if="dialogType=='edit'" class="btn btn-primary btn-block" ng-click="home.update(form)">Update</button>
+@{{home.errors}}
 </div>
 </div>
