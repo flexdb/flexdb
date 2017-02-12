@@ -2,16 +2,20 @@
 
 namespace Modules\Flexwb\Controllers\Api;
 
+
 use Illuminate\Http\Request;
 use Modules\Base\Controller\BaseController;
+use Modules\Services\ValidatorService;
 
 class ResController extends BaseController {
 
     protected $notifications = [];
+
     public function __construct(
     \App\Repositories\QueryBuilderRepository $repository
     ) {
         $this->repository = $repository;
+        $this->validator = new Validator();
     }
 
     public function resIndex(Request $request, $topRes) {
@@ -42,7 +46,20 @@ class ResController extends BaseController {
     public function resStore(Request $request, $topRes) {
 
         $data = $request->all();
-        $newItem = $this->repository->store($data, $topRes);
+        $isValid = $this->validator->getRules($topRes)->validate($data);
+        if($isValid) {
+            $newItem = $this->repository->store($data, $topRes);
+        } else {
+            $errors = $this->validator->getErrors();
+            array_push($this->notifications, ['type' => 'error', 'msg' => 'Possibly incorrect data. Please fix them.' ]);
+            return response()
+                    ->json(['errors' => $errors])
+                    ->setStatusCode(400, "Bad Request - Validataion Errors")
+                    ->header('x-relations', json_encode([]))
+                    ->header('x-notifications', json_encode($this->notifications));
+        }
+
+        
         return response()->json($newItem);
     }
 
