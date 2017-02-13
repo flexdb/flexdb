@@ -23,7 +23,7 @@
     <!-- v1.0.0 -->
     <!--<link rel="stylesheet" type="text/css" href="/assets/vendors/bootstrap/dist/css/bootstrap.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">-->
-    
+    <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
 
     <!-- Clean UI Styles -->
     <link rel="stylesheet" type="text/css" href="/assets/common/css/source/main.css">
