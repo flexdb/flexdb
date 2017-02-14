@@ -20,8 +20,6 @@
 <section class="page-content">
     
     <div ui-view="content"></div>
-    <input ng-flatpickr class="flatpickr" type="text" ng-model="myDate" placeholder="Select Date.." />
-    <input ng-model="myDate" />
 </section>
 
 <div class="main-backdrop"><!-- --></div>
