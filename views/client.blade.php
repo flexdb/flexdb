@@ -25,7 +25,7 @@
 <div class="main-backdrop"><!-- --></div>
 
 
-    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular.162.min.js"></script>
     @if(env('APP_ENV') == 'prod')
     <script src="/js/common.bundle.js"></script>
     <script src="/js/app.js"></script>
