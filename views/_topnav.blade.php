@@ -6,14 +6,14 @@
     </div>
     <div class="menu">
         <div class="menu-user-block">
-            <div class="dropdown dropdown-avatar">
-                <a href="javascript: void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <div class="dropdown dropdown-avatar" uib-dropdown>
+                <a href="javascript: void(0);" class="dropdown-toggle" uib-dropdown-toggle aria-expanded="false">
                     <span class="avatar" href="javascript:void(0);">
                         <img src="../assets/common/img/temp/avatars/1.jpg" alt="Alternative text to the image">
                     </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="" role="menu">
-                    <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-user"></i> Profile</a>
+                    <a class="dropdown-item align-icon-center" href="javascript:void(0)"><i class="material-icons">face</i> Profile</a>
                     <div class="dropdown-divider"></div>
                     <div class="dropdown-header">Home</div>
                     <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-circle-right"></i> System Dashboard</a>
@@ -27,26 +27,10 @@
         <div class="menu-info-block">
             <div class="left">
                 <div class="header-buttons">
+
                     <div class="dropdown" uib-dropdown>
-                        <a href="javascript: void(0);" class="dropdown-toggle dropdown-inline-button" uib-dropdown-toggle aria-expanded="false">
-                            <i class="dropdown-inline-button-icon icmn-sort-alpha-asc"></i>
-                            <span class="hidden-lg-down">Sort By</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="" role="menu" uib-dropdown-menu>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-office"></i>Office Name</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-calendar"></i>Date</a>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-header">Geographic</div>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-location"></i>Atoll</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-location"></i>Island</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-location"></i>North/South</a>
-                            <div class="dropdown-divider"></div>
-                        </ul>
-                    </div>
-                    <div class="dropdown" uib-dropdown>
-                        <a href="javascript: void(0);" class="dropdown-toggle dropdown-inline-button"  uib-dropdown-toggle aria-expanded="false">
-                            <i class="dropdown-inline-button-icon icmn-stack"></i>
+                        <a href="javascript: void(0);" class="dropdown-toggle dropdown-flexbox-button"  uib-dropdown-toggle aria-expanded="false">
+                            <i class="material-icons dropdown-inline-button-icon">group_work</i>
                             <span class="hidden-lg-down">Group By</span>
                             <span class="caret"></span>
                         </a>
@@ -57,6 +41,25 @@
                             <a class="dropdown-item" href="javascript:void(0)">Atoll</a>
                         </ul>
                     </div>
+                    
+                    <div class="dropdown" uib-dropdown>
+                        <a href="javascript: void(0);" class="dropdown-toggle dropdown-flexbox-button" uib-dropdown-toggle aria-expanded="false">
+                            <i class="material-icons dropdown-inline-button-icon">sort</i>
+                            <span class="hidden-lg-down">Sort By</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="" role="menu" uib-dropdown-menu>
+                            <a class="dropdown-item dropdown-flexbox-button" href="javascript:void(0)"><i class="material-icons">sort</i>Office Name</a>
+                            <a class="dropdown-item dropdown-flexbox-button" href="javascript:void(0)"><i class="material-icons">event</i>Date</a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-header">Geographic</div>
+                            <a class="dropdown-item dropdown-flexbox-button" href="javascript:void(0)"><i class="material-icons">room</i>Atoll</a>
+                            <a class="dropdown-item dropdown-flexbox-button" href="javascript:void(0)"><i class="material-icons">room</i>Island</a>
+                            <a class="dropdown-item dropdown-flexbox-button" href="javascript:void(0)"><i class="material-icons">room</i>North/South</a>
+                            <div class="dropdown-divider"></div>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
 <!--            <div class="left hidden-md-down">
