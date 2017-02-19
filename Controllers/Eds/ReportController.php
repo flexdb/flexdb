@@ -27,7 +27,6 @@ class ReportController
 
         $this->getFieldDefs($reportTables);
 
-//        $this->fieldDefs;
         $joinTableDefs = $this->getJoinTableDefs($joinTables);
         $selects = $this->getSelectValues();
         array_push($selects, 'project_islands.island_id as this_project_island');
