@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="http://{{env('NPM_SERVER', 'localhost')}}:8088/admin.css" />
         @endif
         
+        <script type="text/javascript" src='http://cloud.tinymce.com/stable/tinymce.min.js'></script>
+        
         <base href="/">
 
         
