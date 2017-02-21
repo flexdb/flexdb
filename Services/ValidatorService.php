@@ -20,10 +20,23 @@ class ValidatorService {
     }
 
     public function getRules($topRes) {
-        $fields = \DB::table('eds_fields')->select('field', 'validations')->where('table', $topRes)->get();
+        $defaults = 
+        $fields = \DB::table('eds_fields')->select('field', 'validations', 'type')->where('table', $topRes)->get();
         $this->rules = [];
         foreach($fields as $field) {
-            $this->rules[$field->field] = json_decode($field->validations);
+            if(!empty($fields->validations)) {
+                $this->rules[$field->field] = json_decode($field->validations);
+            } else {
+
+                if($field->type == 'date') {
+                    $this->rules[$field->field] = ['required', 'date'];
+                } elseif($field->type == 'integer') {
+                    $this->rules[$field->field] = ['required', 'numeric'];
+                } else {
+                    $this->rules[$field->field] = ['required'];
+                }
+            }
+            
         }
         return $this;
         
