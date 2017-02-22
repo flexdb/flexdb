@@ -4,7 +4,7 @@ namespace Modules\Flexwb\Services;
 use Illuminate\Http\Request;
 
 class FileUploadService{
-    
+
     public $imageSizes = [
         [
             'width' => 280,
@@ -45,7 +45,7 @@ class FileUploadService{
     public $imageCrop = false;
     public $imageResize = false;
 
-    
+
     /**
      *
      * @param UploadedFile $file
@@ -57,11 +57,11 @@ class FileUploadService{
      *       ] $option
      * @return boolean|array
      */
-    public function uploadAndGetInformation(UploadedFile $file, array $option = array()){
-            if(is_null($this->path)){
-                $this->setDefaultPath();
-            }
-
+    public function uploadAndGetInformation($file, array $option = array()){
+            // if(is_null($this->path)){
+            //     $this->setDefaultPath();
+            // }
+            $this->path = storage_path();
             $name = $option['name'] . '.' . $file->getClientOriginalExtension();
 
             if (!$file->isValid()) return false;
@@ -69,7 +69,7 @@ class FileUploadService{
                     $file->move($this->path.DIRECTORY_SEPARATOR.$option['destination'], $name);
 
                     $uploadedFilePath = $this->path.DIRECTORY_SEPARATOR.$option['destination'].DIRECTORY_SEPARATOR.$name;
-                    
+
                     $filePath = $uploadedFilePath;
                     if($this->imageCrop)
                     {
@@ -78,16 +78,15 @@ class FileUploadService{
                     if($this->imageResize){
                         $this->resizeFile($filePath, $name, $option);
                     }
-                    $file = [ 'name' => $name, 'caption' => $option['caption'],
-                        'file' => $option['destination'] . '/' . $name,
-                        'type' => (isset($option['type']) ? $option['type'] : null) ];
+                    $file = [ 'name' => $name,
+                        'path' => $option['destination'] ];
                     return $file;
             } catch (Exception $e) {
 
                     return false;
             }
     }
-    
+
     public function cropFile($uploadedFilePath, $option)
     {
         $name = $option['name'] . '.' . $file->getClientOriginalExtension();
@@ -97,7 +96,7 @@ class FileUploadService{
                                 ->save($cropedFilePath);
                         return $cropedFilePath;
     }
-    
+
     public function crop($width = 480, $height = 360)
     {
         $this->imageCrop = true;
@@ -107,13 +106,13 @@ class FileUploadService{
         ];
         return this;
     }
-    
+
     public function resize()
     {
         $this->imageResize = true;
         return this;
     }
-    
+
     public function resizeFile($filePath, $fileName, $option)
     {
         foreach ($this->imageSizes as $size) {
