@@ -40,13 +40,10 @@
 
 <div class="card linked-res ">
     <h4 class="ucfirst">{{$relationName}}
-        <button class="btn btn-primary btn-sm" style="margin-left: 10px;"
-                ng-click="home.addRelatedItem('{{$subResFields->table}}', '{{str_singular($subResFields->field')">
-                Add
-        </button>
+
     </h4>
 
-    <?php print_r($relationName) ?>
+    <?php var_dump($subResFields['fields']->all()) ?>
 
 </div>
 
