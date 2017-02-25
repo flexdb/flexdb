@@ -92,9 +92,7 @@ class EdsTablesController
         if(Schema::hasTable($newTableName)) {
             return response()->json(["msg" => "Table Already Exists"], 400);
         } else {
-
             return $this->createTable($newTableName);
-
         }
 
     }

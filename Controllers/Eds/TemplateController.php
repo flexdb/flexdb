@@ -23,8 +23,8 @@ class TemplateController extends Controller
         $fields = $allFields->where('table','=', $tableName);
         $relations = [];
         foreach($subRes as $rel) {
-            $relations[$rel]['fields'] = $allFields->where('table','=', $subRes);
-        }   
+            $relations[$rel] = $allFields->where('table','=', $rel);
+        }
         
         return view('fwb::item', compact('fields', 'tableName', 'id', 'subRes', 'relations'));
     }

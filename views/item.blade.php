@@ -38,12 +38,21 @@
 
 
 
+
 <div class="card linked-res ">
     <h4 class="ucfirst">{{$relationName}}
 
+
+        <button class="btn btn-primary btn-sm" style="margin-left: 10px;"
+                ng-click="home.addRelatedItem('{{$relationName}}', '{{$relationName}}')">
+                Add
+        </button>
     </h4>
 
-    <?php var_dump($subResFields['fields']->all()) ?>
+    @foreach($subResFields as $field)
+    {{ var_dump($field->field) }}
+    @endforeach
+
 
 </div>
 
