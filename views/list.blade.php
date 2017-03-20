@@ -2,7 +2,7 @@
 <div class="page-content-inner">
     <div class="list-heading">
         <h4 style="text-transform:capitalize;">@{{home.resName}}
-            <button class="btn btn-primary btn-sm" style="margin-left: 10px;" ng-click="home.add()">Add</button>
+            <button class="btn btn-primary btn-sm {{$resName}}-add" style="margin-left: 10px;" ng-click="home.add()">Add</button>
         </h4>
 
     </div>
@@ -63,8 +63,8 @@
                         <button class="btn btn-outline-info btn-sm"
                                 ui-sref="home.item({resName: home.resName, resId: item.id})"
                                 >View</button>
-                        <button class="btn btn-outline-info btn-sm"  ng-click="home.edit(item, $index)">Edit</button>
-                        <button class="btn btn-outline-warning btn-sm" ng-click="home.del(item, $index)">Del</button>
+                        <button class="btn btn-outline-info btn-sm {{$resName}}-edit"  ng-click="home.edit(item, $index)">Edit</button>
+                        <button class="btn btn-outline-warning btn-sm {{$resName}}-del" ng-click="home.del(item, $index)">Del</button>
                     </div>
                 </td>
             </tr>

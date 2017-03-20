@@ -19,14 +19,17 @@ class TemplateController extends Controller
         $tableService = new TableService();
         
         $allFields = $tableService->getFieldDefs();
-        $subRes = $tableService->table($resName)->getHasMany()->pluck('table')->unique();
+        $subRes = $tableService->table($resName)->getHasMany()->pluck('field', 'table');
         $fields = $allFields->where('table','=', $tableName);
         $relations = [];
-        foreach($subRes as $rel) {
+        foreach($subRes as $rel => $linkField) {
             
             $relations[$rel]['fields'] = $allFields->where('table','=', $rel)->toArray();
+            $relations[$rel]['linkField'] = $linkField;
+        
             // TODO: add link field to be used in template for add dialog
         }
+        
         
         return view('fwb::item', compact('fields', 'tableName', 'id', 'subRes', 'relations'));
     }
