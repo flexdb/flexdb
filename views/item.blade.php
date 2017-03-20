@@ -61,10 +61,13 @@
         </tr>
         <tr ng-repeat="item in home.item.<?=$relationName?>">
             @foreach($relationDef['fields'] as $field)
-              <td>
-                  {{item.<?=$field->field?>}}
-                  
-            </td>
+              
+                  @if(!$field->key_type == "fk")
+                    <td>{{item.<?=$field->field?>}}</td>
+                    @else
+                    <td>{{item.<?= substr($field->field, 0, -3).".".$field->link_ui_label_field ?>}}</td>
+                  @endif
+            
             @endforeach
     
           

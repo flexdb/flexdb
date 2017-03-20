@@ -62,7 +62,9 @@ class FileUploadService{
             //     $this->setDefaultPath();
             // }
             $this->path = storage_path();
-            $name = $option['name'] . '.' . $file->getClientOriginalExtension();
+            $name = isset($option['name']) ? $option['name'] : 
+                        date("YmdHis")."-".$file->getClientOriginalName();
+
 
             if (!$file->isValid()) return false;
             try {
