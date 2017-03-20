@@ -34,7 +34,7 @@
   </table>
   </div>
 
-@foreach($relations as $relationName => $subResFields)
+@foreach($relations as $relationName => $relationDef)
 
 
 
@@ -48,10 +48,30 @@
                 Add
         </button>
     </h4>
-
-    @foreach($subResFields as $field)
-    {{ var_dump($field->field) }}
-    @endforeach
+    <table class="table">
+        <tr>
+            @foreach($relationDef['fields'] as $field)
+              <th>
+                
+                  {{ $field->label }}
+            </th>
+            @endforeach
+    
+          
+        </tr>
+        <tr ng-repeat="item in home.item.<?=$relationName?>">
+            @foreach($relationDef['fields'] as $field)
+              <td>
+                  {{item.<?=$field->field?>}}
+                  
+            </td>
+            @endforeach
+    
+          
+        </tr>
+            
+    </table>
+    
 
 
 </div>

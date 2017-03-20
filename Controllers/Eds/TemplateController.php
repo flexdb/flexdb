@@ -23,9 +23,9 @@ class TemplateController extends Controller
         $fields = $allFields->where('table','=', $tableName);
         $relations = [];
         foreach($subRes as $rel) {
-            $relations[$rel]['fields'] = $allFields->where('table','=', $rel);
+            
+            $relations[$rel]['fields'] = $allFields->where('table','=', $rel)->toArray();
             // TODO: add link field to be used in template for add dialog
-            $relations[$rel]['linkField'] = $allFields->where('table','=', $rel);
         }
         
         return view('fwb::item', compact('fields', 'tableName', 'id', 'subRes', 'relations'));
