@@ -67,8 +67,9 @@
         <tr ng-repeat="item in home.item.<?=$relationName?>">
             @foreach($relationDef['fields'] as $field)
                 @if($field->field != $relationDef['linkField'])
-              
-                  @if(!$field->key_type == "fk")
+                    @if($field->form_input == "file")
+                    <td><a  target="_blank" ng-href="/files/{{item.<?=$field->field?>}}">{{item.<?=$field->field?>}}</a></td>
+                  @elseif($field->key_type != "fk")
                     <td>{{item.<?=$field->field?>}}</td>
                     @else
                     <td>{{item.<?= substr($field->field, 0, -3).".".$field->link_ui_label_field ?>}}</td>
