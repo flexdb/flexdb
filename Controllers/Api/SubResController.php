@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace Modules\Flexwb\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Modules\Base\Controller\BaseController;
