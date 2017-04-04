@@ -1,0 +1,134 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <div class="row-fluid">
+                <h5>Add Field</h5>
+            </div>
+            <form ng-model="table.form">
+                <input type="hidden" ng-model="table.form.table">
+                    <div style="border-bottom: 2px dashed grey; padding: 1rem 0;">
+                     
+                    </div>
+                
+                    <div style="border-bottom: 2px dashed grey; padding: 1rem 0;">
+                        Type:
+                        <select ng-options="item.id as item.label for item in table.fieldTypes track by item.id" ng-model="table.form.type"></select>
+                        <div ng-if="table.form.type == 'fk'" style="margin-left: 50px">
+                            table <select ng-options="key as key for (key,item) in table.dbFields track by key" ng-model="table.form.link_table"></select>
+                            <span>(the table you want to link to, e.g "project")</span>
+                        </div>
+                        <div ng-if="table.form.type == 'fk'"  style="margin-left: 50px">
+                            display 
+                            <select 
+                                ng-options="item as item for item in table.dbFields[table.form.link_table]" 
+                                ng-model="table.form.link_ui_label_field"
+                                ng-change="table.suggestFields('link_table', form.link_ui_label_field)"
+                            >
+                            </select>
+                            <span>(the column of the table you want to display here, e.g "project Name")</span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 2px dashed grey; padding: 1rem 0;">
+                        
+                        Field Short Name (for database): <input ng-model="table.form.name"  type="text" pattern="^[a-z_]*$" />
+                        <div style="font-size: 10pt;margin-left: 100px;">
+                            <span ng-if="table.form.type == 'fk'">
+                                <span class="text-danger">Optional</span> 
+                                for link to tables,
+                                <span class="text-danger">leave blank if not sure</span>
+                            </span>
+                        
+                            <div class="input-msg">Only lowercase letter and underscores ( _ ) are allowed in the name. So seperate words with underscore eg. first_name, earliest_start_date</div>
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 1rem 0;">
+                        Field Label (for display): <input ng-model="table.form.label" type="text" />
+                        <div style="font-size: 10pt;">
+                            <div class="input-msg" style="margin-left: 100px;">Descriptive name. Dhivehi is also allowed. Try to keep it short, coz having long names will make reports look ugly.</div>
+                        </div>
+                    </div>
+                    
+                    
+                
+                <button class="btn btn-block btn-sm btn-info" ng-click="table.addField(table.form)">Add Field</button>
+            </form>
+
+            <!--<div class="row-fluid">-->
+            <!-- ### Relatiions section ###-->
+<!--            <hr />
+            <h5>Add Sub Table</h5>
+            </div>
+            <form ng-model="form">
+                Table <b>{{table.stateParams.resName}}</b>
+                <select ng-options="item as item for item in ['hasMany']" ng-model="form.relation_type"></select>
+                &nbsp;&nbsp;
+                <select ng-options="key as key for (key,item) in table.dbFields track by key" ng-model="form.link_table"></select><br />
+
+                <p ng-if="table.form.relation_type=='hasMany'">This means one {{table.stateParams.resName}} is linked to many {{form.link_table}},
+                    <b>BUT</b> a (one) {{form.link_table}} is only linked to <b>only one</b>  {{table.stateParams.resName}}. 
+                    This is suitable where {{form.link_table}} is a sub-resource/object of a single {{table.stateParams.resName}}.
+                    A typical example would be the employees of a department. An employee belongs to only one department, and is linked to only one department.
+                </p>
+
+                <p ng-if="table.form.relation_type=='belongsToMany'">This means many {{table.stateParams.resName}} are linked to {{form.link_table}},
+                    <b>AND</b> a (one) {{form.link_table}} is linked to <b>many</b>  {{table.stateParams.resName}} 
+                    This is suitable where {{form.link_table}} is a related resource/object of a {{table.stateParams.resName}}.
+                    A typical example would be members a project team. A member may have many projects and a project may have many members, where some overlap.
+                </p>
+                <button  class="btn btn-block btn-sm btn-info" ng-click="table.addRelation(form)">Link To Table</button>
+            </form>-->
+           
+            
+        </div>
+        <div  class="col">
+            <div>
+                <table class="table" ng-show="table.tableDetails.length > 0">
+                    <thead>
+                        <tr >
+                            <th ng-repeat="title in ['Field', 'Label', 'Type', 'Details']">{{title}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="field in table.tableDetails">
+                            <td>
+                                <span ng-if="field.key_type != 'fk'">
+                                    {{field.field}}
+                                </span>
+                                <span ng-if="field.key_type == 'fk'">
+                                    {{field.field.slice(0,field.field.indexOf('_'))}}
+                                </span>
+                                
+                            </td>
+                            <td>{{field.label}}</td>
+                            <td>
+                                <span ng-if="field.key_type != 'fk'">
+                                    {{field.type}}
+                                </span>
+                                <span ng-if="field.key_type == 'fk'">
+                                    Link to <b>{{field.link_table}}</b>
+                                </span>
+                            </td>
+                            <td>
+                                <span ng-if="field.link_ui_label_field.length > 0">
+                                    Show <b>{{field.link_ui_label_field}}</b> from <b>{{field.link_table}}</b> table
+                                </span>
+                            </td>
+                            <td>
+                                <button ng-click="table.delField(field)">Del</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table" ng-show="table.tableDetails.length < 1" style="padding: 20px;">There are no fields in this table</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

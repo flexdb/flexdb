@@ -1,0 +1,90 @@
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div  class="col">
+            <button class="btn btn-success btn-fab" ng-click="table.addField()">Add Column</button>
+        
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div  class="col">
+<!--            <form method="post">
+  <textarea ui-tinymce="table.tinymceOptions" ng-model="form.tinymceModel"></textarea>
+  {{form.tinymceModel}} Options: {{table.tinymceOptions}}
+</form>-->
+            <table class="table table-striped" ng-show="table.tableDetails.length > 0">
+                <thead>
+                    
+                    <tr >
+                        <th ng-repeat="field in table.tableDetails">
+                            {{field.label}}
+                            <button ng-click="table.delField(field)">Del</button>
+                        </th>
+                        <th>
+                            <button class="btn btn-success btn-fab" ng-click="table.addField()"> + </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-info">
+                        <td ng-repeat="field in table.tableDetails">
+                            <div>
+                                Short Name:
+                                <span ng-if="field.key_type != 'fk'">
+                                {{field.field}}
+                                </span>
+                                <span ng-if="field.key_type == 'fk'">
+                                    {{field.field.slice(0,field.field.indexOf('_'))}}
+                                </span>
+                            </div>
+                            <div>
+                                Type:
+                                <span ng-if="field.key_type != 'fk'">
+                                {{field.type}}
+                                </span>
+                                <span ng-if="field.key_type == 'fk'">
+                                    Link to <b>{{field.link_table}}</b>. <br />
+                                </span>
+                                <span ng-if="field.link_ui_label_field.length > 1">
+                                Show <b>{{field.link_ui_label_field}}</b> from <b>{{field.link_table}}</b> table
+                            </span>
+                                
+                            </div>
+                            
+
+                        </td>
+                  
+                    </tr>
+                    <tr>
+                        <td colspan="{{table.tableDetails.length}}" align="center">------ Sample Data (last 10 rows) ------</td>
+                    </tr>
+                    <tr ng-repeat="item in table.sampleData | limitTo:10">
+                        <td ng-repeat="field in table.tableDetails">
+                            <span ng-if="field.key_type != 'fk'">
+                                    {{item[field.field]}}
+                            </span>
+                            <span ng-if="field.key_type == 'fk'">
+                                    {{item[field.field.slice(0, -3)][field.link_ui_label_field]}}
+                            </span>
+                            
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table" ng-show="table.tableDetails.length < 1" style="padding: 20px;">There are no fields in this table</div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div  class="col">
+            <button class="btn btn-success btn-fab" ng-click="table.addAcl()">Add Acl</button>
+
+        </div>
+
+    </div>
+</div>
+

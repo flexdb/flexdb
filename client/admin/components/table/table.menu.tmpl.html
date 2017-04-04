@@ -1,0 +1,37 @@
+        <div style="overflow-y:scroll;">
+
+
+            <div id="side-panel-wrapper" class="left-nav" ng-class="{true: 'left-nav-show', false: 'left-nav-hide'}[showMenu]">
+                <a href="/admin#!/tables/create">
+                    <button class="btn btn-info btn-block"><b>Add/Del Table</b></button>
+                </a>
+                <div style="padding-top: 20px;">
+                    <b>{{menuSection.group_label}}</b>
+                </div>
+                <span ng-repeat="menuItem in table.tables.list['dbUserTables'].tables track by $index">
+                <a href="/admin#!/tables/{{menuItem}}">
+                    
+                <div  class="nav-buttons ucfirst" ng-class="{'active' : table.stateParams.resName == menuItem}">
+                    {{menuItem}}
+                    <span 
+                        ng-if="!(table.tables.list['edsUserTables'].tables.indexOf(menuItem)+1)" 
+                        title="No fields defined"
+                    >(!)</span>
+                </div>
+                </a>
+                </span>
+
+
+              
+
+
+            </div>
+        </div>
+
+        <div class="main-view-container">
+            <div class="with-nav" style="margin-top: 90px;">
+                
+                <ui-view></ui-view>
+
+            </div>
+        </div>

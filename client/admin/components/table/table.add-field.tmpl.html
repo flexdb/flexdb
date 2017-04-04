@@ -1,0 +1,54 @@
+        <div class="row-fluid">
+            <h5>Add Field</h5>
+            
+            <form ng-model="table.form">
+                <input type="hidden" ng-model="table.form.table">
+                    <div style="border-bottom: 2px dashed grey; padding: 1rem 0;">
+                     
+                    </div>
+                
+                    <div style="border-bottom: 2px dashed grey; padding: 1rem 0;">
+                        Type:
+                        <select ng-options="item.id as item.label for item in table.fieldTypes track by item.id" ng-model="table.form.type"></select>
+                        <div ng-if="table.form.type == 'fk'" style="margin-left: 50px">
+                            table <select ng-options="key as key for (key,item) in table.dbFields track by key" ng-model="table.form.link_table"></select>
+                            <span>(the table you want to link to, e.g "project")</span>
+                        </div>
+                        <div ng-if="table.form.type == 'fk'"  style="margin-left: 50px">
+                            display 
+                            <select 
+                                ng-options="item as item for item in table.dbFields[table.form.link_table]" 
+                                ng-model="table.form.link_ui_label_field"
+                                ng-change="table.suggestFields('link_table', form.link_ui_label_field)"
+                            >
+                            </select>
+                            <span>(the column of the table you want to display here, e.g "project Name")</span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 2px dashed grey; padding: 1rem 0;">
+                        
+                        Field Short Name (for database): <input ng-model="table.form.name"  type="text" pattern="^[a-z_]*$" />
+                        <div style="font-size: 10pt;margin-left: 100px;">
+                            <span ng-if="table.form.type == 'fk'">
+                                <span class="text-danger">Optional</span> 
+                                for link to tables,
+                                <span class="text-danger">leave blank if not sure</span>
+                            </span>
+                        
+                            <div class="input-msg">Only lowercase letter and underscores ( _ ) are allowed in the name. So seperate words with underscore eg. first_name, earliest_start_date</div>
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 1rem 0;">
+                        Field Label (for display): <input ng-model="table.form.label" type="text" />
+                        <div style="font-size: 10pt;">
+                            <div class="input-msg" style="margin-left: 100px;">Descriptive name. Dhivehi is also allowed. Try to keep it short, coz having long names will make reports look ugly.</div>
+                        </div>
+                    </div>
+                    
+                    
+                
+                <button class="btn btn-block btn-sm btn-info" ng-click="table.storeField(table.form)">Add Field</button>
+            </form>
+
+        </div>
