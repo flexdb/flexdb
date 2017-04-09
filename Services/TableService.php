@@ -3,6 +3,7 @@ namespace Modules\Flexwb\Services;
 
 use Modules\Flexwb\Controllers\Eds\EdsTablesController;
 use Illuminate\Http\Request;
+use Modules\Qbrepository\QueryBuilderRepository;
 
 class TableService {
 
@@ -12,7 +13,7 @@ class TableService {
 
     public function __construct() {
 
-        $this->tempHack = new EdsTablesController((new \App\Repositories\QueryBuilderRepository((new Request()))), (new Request()));
+        $this->tempHack = new EdsTablesController((new QueryBuilderRepository((new Request()))), (new Request()));
     }
 
     function table($table) {

@@ -40,5 +40,3 @@ angular.module('flexwb').config(function(cfpLoadingBarProvider) {
   });
 
 export default angular.module('flexwb').name
-
-angular.module('app',['flexwb']);

@@ -6,14 +6,13 @@ namespace Modules\Flexwb\Controllers\Api;
 use Illuminate\Http\Request;
 use Modules\Base\Controller\BaseController;
 use Modules\Flexwb\Services\ValidatorService;
+use Modules\Qbrepository\QueryBuilderRepository;
 
 class ResController extends BaseController {
 
     protected $notifications = [];
 
-    public function __construct(
-    \App\Repositories\QueryBuilderRepository $repository
-    ) {
+    public function __construct(QueryBuilderRepository $repository) {
         $this->repository = $repository;
         $this->validator = new ValidatorService();
     }

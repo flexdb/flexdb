@@ -4,6 +4,7 @@ namespace Modules\Flexwb\Controllers\Eds;
 
 use Illuminate\Http\Request;
 use Modules\Flexwb\Controllers\Eds\TableService;
+use Modules\Qbrepository\QueryBuilderRepository;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,7 +16,7 @@ class ReportController
 
     protected $notifications = [];
 
-    public function __construct(\App\Repositories\QueryBuilderRepository $repo, Request $request) {
+    public function __construct(QueryBuilderRepository $repo, Request $request) {
         $this->repo = $repo;
         $this->request = $request;
 
