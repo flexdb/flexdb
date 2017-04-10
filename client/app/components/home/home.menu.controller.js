@@ -97,7 +97,6 @@ export default class HomeController extends BaseCtrl {
     this.http({method: "POST", url : "/api/" + table, 'data': data })
         .then((response) => {
           let newItem = response.data;
-          console.log(response);
           // this.items.push(newItem);
 // TODO: change to push new item, current hack to allow display title
           this.list(); 
