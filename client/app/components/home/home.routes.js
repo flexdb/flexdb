@@ -34,8 +34,7 @@ export default function routes($stateProvider) {
       },
       controller: 'ItemController',
       controllerAs: 'home'
-    }
-    );
+    });
 }
 
 routes.$inject = ['$stateProvider'];

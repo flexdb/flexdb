@@ -161,7 +161,7 @@ class EdsTablesController
 
         if(\DB::table('eds_fields')->where('table', '=', $tableName)->where('field', '=', $newField['field'])->get()->isEmpty()) {
 
-            $fieldDef = (new \App\Repositories\QueryBuilderRepository($request))->store($newField, 'eds_fields');
+            $fieldDef = (new QueryBuilderRepository($request))->store($newField, 'eds_fields');
             array_push($this->notifications, ['type' => 'success', 'msg' => 'Created field definition for  '.$newField['field'] ]);
 
             if(!empty($newField['key_type']) && $newField['key_type'] == 'fk' ) {
@@ -207,7 +207,7 @@ class EdsTablesController
 
         if(\DB::table('eds_relations')->where('table1', '=', $newLink['table1'])->where('table2', '=', $newLink['table2'])->get()->isEmpty()) {
 
-            $fieldDef = (new \App\Repositories\QueryBuilderRepository($request))->store($newLink, 'eds_relations');
+            $fieldDef = (new QueryBuilderRepository($request))->store($newLink, 'eds_relations');
             array_push($this->notifications, ['type' => 'success', 'msg' => 'Created Link  to '.$newLink['table2'] ]);
 
         } else {
