@@ -10,7 +10,7 @@
             <li ng-repeat="item in menu.menuItems">
                 <a class="left-menu-link capitalize  align-icon-center" href="#!/ui/@{{item}}" style="display:flex; align-items: center;">
                     <i class="material-icons">play_arrow</i>
-                    @{{item}}
+                    @{{item.replace('_', " ")}}
                 </a>
             </li>
 <!--            <li>

@@ -4,7 +4,7 @@
   <div>
   
   <h3 class="ucfirst">
-      @{{home.resName}}
+      @{{home.resName.replace('_', " ")}}
       <span style="color:grey;">/</span>
       @{{home.stateParams.resId}}
   </h3>

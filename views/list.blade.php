@@ -1,7 +1,7 @@
 
 <div class="page-content-inner">
     <div class="list-heading">
-        <h4 style="text-transform:capitalize;">@{{home.resName}}
+        <h4 style="text-transform:capitalize;">@{{home.resName.replace('_', " ")}}
             <button class="btn btn-primary btn-sm {{$resName}}-add" style="margin-left: 10px;" ng-click="home.add()">Add</button>
         </h4>
 

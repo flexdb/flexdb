@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="http://{{env('NPM_SERVER', 'localhost')}}:8088/common.bundle.css" />
     <link rel="stylesheet" href="http://{{env('NPM_SERVER', 'localhost')}}:8088/app.css" />
     @endif
-    <link rel="stylesheet" href="/css/user.css" />
+    <!--<link rel="stylesheet" href="/css/user.css" />-->
     <nav ui-view="leftnav" class="left-menu" left-menu ng-class="{'hidden-left-menu': hideLeftMenu}">
         <!-- content inserted from angular ui-view -->
     </nav>

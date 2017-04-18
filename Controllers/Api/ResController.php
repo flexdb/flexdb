@@ -18,8 +18,14 @@ class ResController extends BaseController {
     }
 
     public function resIndex(Request $request, $topRes) {
-
-        return $this->repository->index($request, $topRes);
+        $with = $request->get('with');
+        $res = $this->repository;
+        if(!empty($with)) {
+            $with = explode(',', $with);
+            $res = $res->with($with);
+        }
+      
+        return $res->index($request, $topRes);
     }
 
     public function resShow($topRes, $topId) {
