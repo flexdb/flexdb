@@ -8,9 +8,9 @@
 
             <li class="left-menu-list-separator"><!-- --></li>
             <li ng-repeat="item in menu.menuItems">
-                <a class="left-menu-link capitalize  align-icon-center" href="#!/ui/@{{item}}" style="display:flex; align-items: center;">
+                <a class="left-menu-link capitalize  align-icon-center" href="@{{item.link}}" style="display:flex; align-items: center;">
                     <i class="material-icons">play_arrow</i>
-                    @{{item.replace('_', " ")}}
+                    @{{item.label}}
                 </a>
             </li>
 <!--            <li>

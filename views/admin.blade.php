@@ -39,7 +39,7 @@
         <div class="main-container">
             <ui-view></ui-view>
         </div>
-        <script src="/js/angular.162.min.js"></script>
+        <script src="/js/angular.min.js"></script>
          @if(env('APP_ENV') == 'prod')
         <script src="/js/common.bundle.js"></script>
         <script src="/js/admin.js"></script>

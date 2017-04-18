@@ -33,7 +33,7 @@ angular.module('flexwb',
         ngFileUpload
     ]);
 
-angular.module('flexwb').config(routes);
+//angular.module('flexwb').config(routes);
 
 angular.module('flexwb').config(function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
