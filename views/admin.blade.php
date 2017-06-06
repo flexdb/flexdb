@@ -10,8 +10,9 @@
         <link rel="stylesheet" href="/js/common.bundle.css" />
         <link rel="stylesheet" href="/js/admin.css" />
         @else
-        <link rel="stylesheet" href="http://{{env('NPM_SERVER', 'localhost')}}:8088/common.bundle.css" />
-        <link rel="stylesheet" href="http://{{env('NPM_SERVER', 'localhost')}}:8088/admin.css" />
+        <link rel="stylesheet" href="http://{{env('NPM_SERVER', 'localhost')}}:8081/common.bundle.css" />
+        <link rel="stylesheet" href="http://{{env('NPM_SERVER', 'localhost')}}:8081/admin.css" />
+        <link rel="stylesheet" href="http://{{env('NPM_SERVER', 'localhost')}}:8082/style.css" />
         @endif
         
         <script type="text/javascript" src='/js/tinymce/tinymce.min.js'></script>
@@ -44,8 +45,8 @@
         <script src="/js/common.bundle.js"></script>
         <script src="/js/admin.js"></script>
         @else
-        <script src="//{{env('NPM_SERVER', 'localhost')}}:8088/common.bundle.js"></script>
-        <script src="http://{{env('NPM_SERVER', 'localhost')}}:8088/admin.js"></script>
+        <script src="//{{env('NPM_SERVER', 'localhost')}}:8081/common.bundle.js"></script>
+        <script src="http://{{env('NPM_SERVER', 'localhost')}}:8081/admin.js"></script>
         @endif
     </body>
 </html>

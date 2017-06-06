@@ -10,8 +10,6 @@ import ngFileUpload from "ng-file-upload"
 import 'angular-ui-tinymce';
 import './main.scss'
 
-
-
 import mvDate from './infra/MvDateField'
 import routes from './admin/routes.js'
 import table from './admin/components/table';
