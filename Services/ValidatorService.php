@@ -62,6 +62,17 @@ class ValidatorService {
 
     }
 
+    public function errorResponse() {
+            $errors = $this->validator->errors();
+            $notifications = [];
+            array_push($notifications, ['type' => 'error', 'msg' => 'Possibly incorrect data. Please fix them.' ]);
+            return response()
+                    ->json(['errors' => $errors])
+                    ->setStatusCode(400, "Bad Request - Validataion Errors")
+                    ->header('x-relations', json_encode([]))
+                    ->header('x-notifications', json_encode($notifications));
+    }
+
 
 
 

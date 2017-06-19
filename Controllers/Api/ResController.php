@@ -53,19 +53,17 @@ class ResController extends BaseController {
         $data = $request->all();
         $isValid = $this->validator->getRules($topRes)->validate($data);
         if($isValid) {
+
             $newItem = $this->repository->store($data, $topRes);
+            return response()->json($newItem);
+            
         } else {
-            $errors = $this->validator->getErrors();
-            array_push($this->notifications, ['type' => 'error', 'msg' => 'Possibly incorrect data. Please fix them.' ]);
-            return response()
-                    ->json(['errors' => $errors])
-                    ->setStatusCode(400, "Bad Request - Validataion Errors")
-                    ->header('x-relations', json_encode([]))
-                    ->header('x-notifications', json_encode($this->notifications));
+            
+            return $this->validator->errorResponse();
         }
 
         
-        return response()->json($newItem);
+        
     }
 
     public function resDestroy($topRes, $topId) {
